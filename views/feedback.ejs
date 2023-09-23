@@ -1,0 +1,22 @@
+<%- include('partials/navbar') %>
+
+<div class="container mt-5">
+    <h2>Berikan kami saran</h2>
+    <form>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama</label>
+            <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda">
+        </div>
+        <div class="mb-3">
+            <label for="feedback" class="form-label">Feedback</label>
+            <textarea class="form-control" id="feedback" rows="4" placeholder="Tuliskan feedback Anda"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Kirim</button>
+    </form>
+</div>
+
+<%- include('partials/footer') %>
