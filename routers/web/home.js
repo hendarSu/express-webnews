@@ -3,9 +3,8 @@ const HomeController = require("../../controllers/home.controller");
 const homeRouter = express.Router();
 
 const homeController = new HomeController
-
 homeRouter.get('/', homeController.indexHome);
+homeRouter.get('/news/:id', homeController.newsDetail);
 homeRouter.get('/feedback', homeController.indexFeedback);
-
 
 module.exports = homeRouter;
