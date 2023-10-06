@@ -8,9 +8,9 @@ class HomeController {
             const newsData = await newsService.getNews(null);
             res.render("home",
                 {
+                    pageTitle: "HOME | Berita Terkini",
                     layout: "layouts/layouts",
-                    news: newsData,
-                    pageTitle: "HOME | Berita Terkini"
+                    news: newsData
                 });
         } catch (error) {
             console.log(error);
@@ -23,9 +23,9 @@ class HomeController {
             const newsData = await newsService.getNews(id);
             res.render("home",
                 {
-                    layout: "layouts/layouts",
                     news: newsData,
-                    pageTitle: newsData.title
+                    pageTitle: newsData.title,
+                    layout: "layouts/layouts"
                 });
         } catch (error) {
             console.log(error);
@@ -33,7 +33,11 @@ class HomeController {
     }
 
     indexFeedback(req, res) {
-        res.render("feedback", { layout: 'layouts/layout', pageTitle: "About" });
+        res.render("feedback", 
+        { 
+            pageTitle: "About", 
+            layout: 'layouts/layouts' 
+        });
     }
 
     async getNews(req, res) {

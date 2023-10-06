@@ -15,6 +15,7 @@ app.use(ejsLayouts);
 
 // Config folder layouts
 app.set('layout', 'layouts/layouts');
+app.set('layout extractScripts', true);
 
 // built in Middleware
 app.use(express.json());
