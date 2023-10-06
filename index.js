@@ -17,6 +17,9 @@ app.use(ejsLayouts);
 app.set('layout', 'layouts/layouts');
 app.set('layout extractScripts', true);
 
+// SET bower
+app.use(express.static('bower_components'));
+
 // built in Middleware
 app.use(express.json());
 app.use(express.urlencoded({

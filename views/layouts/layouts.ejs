@@ -11,9 +11,52 @@
 <body>
 <!-- Inisiasi content web -->
 <%- body %>
+
+<!-- Include TinyMCE script here -->
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea#content', // ID dari textarea yang ingin Anda konversi menjadi TinyMCE
+    plugins: 'link image code',
+    toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | link image | code',
+  });
+</script>
+
 <!-- Tambahkan referensi Bootstrap JS di sini -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $("#create-news-form").submit(function (event) {
+      event.preventDefault(); // Menghentikan pengiriman formulir secara default
+
+      // Mengambil data dari formulir
+      let title = $("#title").val();
+      let cover = $("#cover").val();
+      let content = $("#content").val();
+
+      // Mengirim data ke API menggunakan AJAX
+      $.ajax({
+        url: "/api/v1/news", // Ganti dengan URL API sesuai dengan struktur Anda
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ title: title, cover: cover, content: content, isPublic: true, author: "Admin" }),
+        success: function (response) {
+          // Tindakan setelah berhasil
+          $("#success-toast").toast("show");
+          // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
+          window.location.href = "/";
+        },
+        error: function (error) {
+          // Tindakan jika terjadi kesalahan
+          console.error("Terjadi kesalahan: " + JSON.stringify(error));
+          alert("Gagal menyimpan berita.");
+        },
+      });
+    });
+  });
+</script>
 </body>
 </html>
