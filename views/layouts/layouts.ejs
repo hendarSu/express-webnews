@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berita Terkini</title>
-    <meta name="description" content="Ini adalah contoh meta description untuk halaman web. Meta description memberikan deskripsi singkat tentang konten halaman web ini." />
-    <!-- Tambahkan referensi Bootstrap CSS di sini -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Berita Terkini</title>
+  <meta name="description"
+        content="Ini adalah contoh meta description untuk halaman web. Meta description memberikan deskripsi singkat tentang konten halaman web ini." />
+  <!-- Tambahkan referensi Bootstrap CSS di sini -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
-<!-- Inisiasi content web -->
-<%- body %>
+  <!-- Inisiasi content web -->
+  <%- body %>
 
 <!-- Include TinyMCE script here -->
 <script src="/tinymce/tinymce.min.js"></script>
@@ -45,7 +48,7 @@
         data: JSON.stringify({ title: title, cover: cover, content: content, isPublic: true, author: "Admin" }),
         success: function (response) {
           // Tindakan setelah berhasil
-          $("#success-toast").toast("show");
+          alert("Berita berhasil ditambah.");
           // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
           window.location.href = "/";
         },
@@ -57,6 +60,35 @@
       });
     });
   });
+
+  $("#comment-form").submit(function (event) {
+    event.preventDefault();
+
+    const name = $("#name").val();
+    const commentText = $("#comment").val();
+    const newsId = $("#newsId").val(); // Ambil ID berita dari input tersembunyi
+
+    $.ajax({
+      url: "/api/v1/comments",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ name, comment: commentText, news_id: newsId }), // Sertakan ID berita
+      success: function (response) {
+        // $("#success-toast").toast("show");
+        alert("Komentar berhasil ditambah.");
+
+        window.location.href = "/news/"+ newsId;
+      },
+      error: function (error) {
+        console.error("Terjadi kesalahan: " + JSON.stringify(error));
+        alert("Gagal menyimpan komentar.");
+      },
+    });
+
+    $("#name").val("");
+    $("#comment").val("");
+  });
 </script>
 </body>
+
 </html>
