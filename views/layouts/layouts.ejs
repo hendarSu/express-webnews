@@ -88,6 +88,21 @@
     $("#name").val("");
     $("#comment").val("");
   });
+
+
+  // Menangani klik tombol "Edit"
+  $('.edit-btn').click(function () {
+      // Dapatkan data yang sesuai dari tabel
+      var row = $(this).closest('tr');
+
+      var id = row.find('td:eq(0)').text();
+      var nama = row.find('td:eq(1)').text();
+
+      // ambil dari ajax
+      $('#editModal #editData').val(nama);
+      $('#editModal #idNews').val(id);
+  });
+
 </script>
 </body>
 

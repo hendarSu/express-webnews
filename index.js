@@ -2,7 +2,7 @@ const express = require("express");
 const router = require("./routers/router");
 const morgan = require("morgan");
 const app = express();
-const port = 3000;
+const port = 3001;
 const path = require('path');
 
 const ejsLayouts = require('express-ejs-layouts');
