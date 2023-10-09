@@ -17,7 +17,7 @@ api.post('/v1/news', homeController.storeNews);
 // Endpoint Comment
 api.post('/v1/comments', commentController.storeComment);
 
-// Endpoint Comment
-api.post('/v1/users/register', commentController.storeComment);
+// Endpoint user
+api.post('/v1/users/register', userController.register);
 
 module.exports = api;
