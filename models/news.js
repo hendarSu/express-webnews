@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.comments, {
         foreignKey : "news_id"
       })
+
+      this.belongsTo(models.user, {
+        foreignKey : "author_id"
+      })
     }
   }
   news.init({
