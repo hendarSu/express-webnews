@@ -5,6 +5,12 @@ const router = express.Router();
 
 router.use('/api', api);
 
+router.use('/api', (req, res) => {
+    res.status(404).json({
+        message : "Halaman tidak ditemukan"
+    });
+});
+
 router.use('/', homeRouter);
 router.use('/', (req, res) => {
     res.render("errors/404");

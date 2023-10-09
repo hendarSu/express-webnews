@@ -99,3 +99,29 @@ $("#registration-form").submit(function (event) {
     });
   }
 });
+
+$(document).ready(function () {
+  $("#login-form").submit(function (event) {
+    event.preventDefault();
+
+    const email = $("#email").val();
+    const password = $("#password").val();
+
+    // Kirim data login ke server menggunakan AJAX atau fetch
+    $.ajax({
+      url: "/api/v1/login", // Ganti dengan rute API login Anda
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ email, password }),
+      success: function (response) {
+        // Tampilkan pesan sukses atau redirect ke halaman utama
+        alert("Login berhasil!");
+        // window.location.href = "/"; // Redirect ke halaman utama jika diperlukan
+      },
+      error: function (error) {
+        console.error("Terjadi kesalahan: " + JSON.stringify(error));
+        alert("Gagal login. Periksa kembali email dan password Anda.");
+      },
+    });
+  });
+});

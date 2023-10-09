@@ -10,6 +10,13 @@ class UserController {
         })
     }
 
+    indexLogin(req, res) {
+        res.render('users/login', {
+            layout: "layouts/layouts",
+            pageTitle : 'Login'
+        })
+    }
+
     async register(req, res) {
         try {
             await userService.store(req.body);        

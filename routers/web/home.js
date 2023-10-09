@@ -21,5 +21,6 @@ homeRouter.get('/news-list', (req, res) => {
 });
 
 homeRouter.get('/register', userController.indexRegister);
+homeRouter.get('/login', userController.indexLogin);
 
 module.exports = homeRouter;
