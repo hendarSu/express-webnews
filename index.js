@@ -20,6 +20,9 @@ app.set('layout extractScripts', true);
 // SET bower
 app.use(express.static('bower_components'));
 
+// set public folrder
+app.use(express.static('public'));
+
 // built in Middleware
 app.use(express.json());
 app.use(express.urlencoded({

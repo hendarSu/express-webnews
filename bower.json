@@ -1,0 +1,20 @@
+{
+  "name": "base-project",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Hendar <hendarsundana@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/hendarSu/quiz-webnews",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tinymce": "^6.7.0"
+  }
+}

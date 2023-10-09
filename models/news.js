@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   news.init({
     title: DataTypes.STRING,
     cover: DataTypes.STRING,
-    author: DataTypes.STRING,
+    author_id: DataTypes.INTEGER,
     content: DataTypes.TEXT,
     isPublic: DataTypes.BOOLEAN
   }, {

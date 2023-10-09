@@ -6,6 +6,7 @@ class HomeController {
     async indexHome(req, res) {
         try {
             const newsData = await newsService.getNews(null);
+            console.log(newsData);
             res.render("home",
                 {
                     pageTitle: "HOME | Berita Terkini",
