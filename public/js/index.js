@@ -83,14 +83,14 @@ $("#registration-form").submit(function (event) {
   } else {
     // Kirim data registrasi ke server menggunakan AJAX atau fetch
     $.ajax({
-      url: "/api/register", // Ganti dengan rute API registrasi Anda
+      url: "/v1/users/register", // Ganti dengan rute API registrasi Anda
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify({ name, email, password }),
       success: function (response) {
         // Tampilkan pesan sukses atau redirect ke halaman login
         alert("Registrasi berhasil! Silakan masuk.");
-        // window.location.href = "/login"; // Redirect ke halaman login jika diperlukan
+        window.location.href = "/";
       },
       error: function (error) {
         console.error("Terjadi kesalahan: " + JSON.stringify(error));
