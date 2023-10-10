@@ -45,6 +45,12 @@ class HomeController {
         res.status(200).json(data);
     }
 
+    async getNewsById(req, res) {
+        const id = req.params.id;
+        const data = await newsService.getNews(id);
+        res.status(200).json(data);
+    }
+
     async storeNews(req, res) {
         const payload = req.body;
         const store = await newsService.store(payload);
