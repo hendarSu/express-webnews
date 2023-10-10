@@ -12,7 +12,6 @@ const homeController = new HomeController();
 const newsController = new NewsController();
 const userController = new UserController();
 
-
 homeRouter.get('/', homeController.indexHome);
 homeRouter.get('/news/:id', homeController.newsDetail);
 homeRouter.get('/feedback', homeController.indexFeedback);
