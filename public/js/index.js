@@ -83,7 +83,7 @@ $("#registration-form").submit(function (event) {
   } else {
     // Kirim data registrasi ke server menggunakan AJAX atau fetch
     $.ajax({
-      url: "/api//v1/users/register", // Ganti dengan rute API registrasi Anda
+      url: "/api/v1/users/register", // Ganti dengan rute API registrasi Anda
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify({ name, email, password }),
