@@ -16,6 +16,7 @@ api.post('/v1/news', homeController.storeNews);
 
 // Endpoint Comment
 api.post('/v1/comments', commentController.storeComment);
+api.delete("/v1/comments/:id", commentController.deleteComment);
 
 // Endpoint user
 api.post('/v1/users/register', userController.register);

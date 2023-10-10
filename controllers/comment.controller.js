@@ -11,6 +11,18 @@ class CommentController {
             res.status(500).json({ error: 'Gagal menyimpan komentar.' });
         }
     }
+
+    async deleteComment(req, res) {
+        try {
+            const comment = await commentService.delete(req.params.id)
+            res.status(201).json({
+                data: comment, message: "Berhasil menghapus komentar"
+            })
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: "Gagal menghapus komentar." });
+        }
+    }
 }
 
 module.exports = CommentController;

@@ -125,3 +125,29 @@ $(document).ready(function () {
     });
   });
 });
+
+$(".delete-comment").click(function () {
+  // Menyimpan referensi ke tombol "Hapus" yang diklik
+  var $deleteButton = $(this);
+
+  // Mengambil ID komentar dari atribut id pada tombol "Hapus"
+  const commentId = $deleteButton.attr("id");
+
+  // Mengirim permintaan DELETE ke API dengan menggunakan ID komentar
+  $.ajax({
+      url: "/api/v1/comments/" + commentId,
+      type: "DELETE",
+      success: function (response) {
+          // Tindakan setelah berhasil menghapus komentar
+          alert("Komentar berhasil di hapus.");
+
+          // Hapus elemen komentar dari DOM
+          $deleteButton.closest(".comment-item").remove();
+          location.reload();
+      },
+      error: function (error) {
+          console.error("Terjadi kesalahan saat menghapus komentar:", error);
+          alert("Gagal menghapus komentar.");
+      }
+  });
+});
