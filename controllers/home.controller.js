@@ -6,7 +6,6 @@ class HomeController {
     async indexHome(req, res) {
         try {
             const newsData = await newsService.getNews(null);
-            console.log(newsData);
             res.render("home",
                 {
                     pageTitle: "HOME | Berita Terkini",
@@ -57,6 +56,8 @@ class HomeController {
 
     async storeNews(req, res) {
         const payload = req.body;
+        const { id } = req.user;
+        payload.author_id = id;
         const store = await newsService.store(payload);
 
         res.status(201).json(store);

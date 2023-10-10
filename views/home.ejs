@@ -1,7 +1,7 @@
 <%- include('partials/navbar') %>
 
 <% if(news.length !== 0) { %>
-    <% if(news.length > 1) { %>
+    <% if(Array.isArray(news)) { %>
         <%- include('hero') %>
 
         <%- include("news-list", { news: news }) %>
