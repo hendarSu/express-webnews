@@ -11,7 +11,8 @@ class HomeController {
                 {
                     pageTitle: "HOME | Berita Terkini",
                     layout: "layouts/layouts",
-                    news: newsData
+                    news: newsData,
+                    user: req.user
                 });
         } catch (error) {
             console.log(error);
@@ -26,7 +27,8 @@ class HomeController {
                 {
                     news: newsData,
                     pageTitle: newsData.title,
-                    layout: "layouts/layouts"
+                    layout: "layouts/layouts",
+                    user: req.user
                 });
         } catch (error) {
             console.log(error);
@@ -37,7 +39,8 @@ class HomeController {
         res.render("feedback", 
         { 
             pageTitle: "About", 
-            layout: 'layouts/layouts' 
+            layout: 'layouts/layouts',
+            user: req.user
         });
     }
 

@@ -5,12 +5,14 @@ class UserController {
     indexRegister(req, res) {
         res.render('users/register', {
             layout: "layouts/layouts",
-            pageTitle: 'Registration'
+            pageTitle: 'Registration',
+            user: req.user
         })
     }
 
     indexLogin(req, res) {
-        res.render('users/login')
+        console.log(req.user);
+        res.render('users/login', { user: req.user })
     }
 
     async register(req, res) {

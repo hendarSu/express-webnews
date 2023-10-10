@@ -6,6 +6,7 @@ class NewsController {
                 {
                     pageTitle: "Create News",
                     layout: "layouts/layouts",
+                    user: req.user
                 });
         } catch (error) {
             console.log(error);
