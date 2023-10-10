@@ -1,12 +1,15 @@
 <%- include('partials/navbar') %>
 
+<% if(news.length !== 0) { %>
+    <% if(Array.isArray(news)) { %>
+        <%- include('hero') %>
 
-<% if(news.length > 1) { %>
+        <%- include("news-list", { news: news }) %>
+    <% } else { %>
+        <%- include("news-detail", { news: news }) %>
+    <% } %>
+<% } else {%>
     <%- include('hero') %>
-
-    <%- include("news-list", { news: news }) %>
-<% } else { %>
-    <%- include("news-detail", { news: news }) %>
 <% } %>
 
 <%- include("partials/footer") %>

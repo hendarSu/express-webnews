@@ -34,10 +34,10 @@ class NewsService {
 
     async store(payload) {
         const date = new Date();
-        const { title, cover, content, author, isPublic } = payload;
+        const { title, cover, content, author_id, isPublic } = payload;
         
         const news = this.newsModel.create({
-            title, cover, content, author,
+            title, cover, content, author_id,
             createdAt :date, updatedAt: date, isPublic
         });
         

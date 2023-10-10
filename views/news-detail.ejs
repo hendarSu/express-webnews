@@ -1,7 +1,5 @@
 <!-- Daftar Berita -->
 <div class="container mt-5">
-    <a href="/" class="btn float-right btn-primary">Back</a>
-
     <h2>
         <%= news.title %>
     </h2>
@@ -26,7 +24,8 @@
             <% news.comments.forEach(comment=> { %>
                 <div class="comment-item">
                     <h5>
-                        <%= comment.name %>
+                        <%= comment.name %> 
+                        <button id="<%= comment.id %>" class="btn btn-danger btn-sm float-right delete-comment">Hapus</button>
                     </h5>
                     <p>
                         <%= comment.comment %>

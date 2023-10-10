@@ -1,0 +1,30 @@
+<%- include('../partials/navbar') %>
+
+<div class="container">
+  <div class="row">
+      <!-- form login -->
+      <div class="col-md-12">
+          <form id="form-login" action="/login" method="post" class="mt-5">
+              <% if(messages.error) { %>
+                  <div class="alert alert-danger" role="alert">
+                      <%= messages.error %>
+                    </div>
+              <% } %>
+              <div class="mb-3">
+                  <label for="formEmail" class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control" id="formEmail"
+                         placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                  <label for="formPassword" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="formPassword"
+                         placeholder="Password anda">
+              </div>
+              <div class="mb-3">
+                  <button type="submit" class="btn btn-primary float-right">Masuk</button>
+              </div>
+          </form>
+      </div>
+  </div>
+
+<%- include("../partials/footer") %>
