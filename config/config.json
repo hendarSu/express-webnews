@@ -1,10 +1,17 @@
 {
   "development": {
-    "username": "webnews",
-    "password": "webnews2024",
-    "database": "webnews",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "username": "default",
+    "password": "R3EST4FMhNky",
+    "database": "verceldb",
+    "host": "ep-polished-flower-03037820-pooler.ap-southeast-1.postgres.vercel-storage.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true, 
+        "rejectUnauthorized": false
+      },
+      "sslmode": "require"
+    }
   },
   "test": {
     "username": "root",
