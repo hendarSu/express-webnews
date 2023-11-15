@@ -10,12 +10,14 @@ const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('./libs/passport');
 
+const { CyclicSessionStore } = require("@cyclic.sh/session-store");
+
 const ejsLayouts = require('express-ejs-layouts');
 
 // built in Middleware
 app.use(express.json());
 app.use(express.urlencoded({
-    extended: false
+  extended: false
 }));
 // proses inisasi middleware atuh
 app.use(cookieParser());
@@ -23,7 +25,17 @@ app.use(flash());
 app.use(session({
   secret: 'secretkey',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new CyclicSessionStore(
+    {
+      table: {
+        name: process.env.CYCLIC_DB,
+      },
+      keepExpired: false,
+      touchInterval: 30000, 
+      ttl: 86400000
+    }
+  )
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -48,5 +60,5 @@ app.use(express.static('public'));
 app.use(router);
 
 app.listen(port, () => {
-    console.log(`App listening on port ${port}!`);
+  console.log(`App listening on port ${port}!`);
 });
