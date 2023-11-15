@@ -12,8 +12,6 @@ const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('./libs/passport');
 
-const { CyclicSessionStore } = require("@cyclic.sh/session-store");
-
 const ejsLayouts = require('express-ejs-layouts');
 
 // built in Middleware
@@ -26,18 +24,8 @@ app.use(cookieParser());
 app.use(flash());
 app.use(session({
   secret: 'secretkey',
-  resave: false,
-  saveUninitialized: false,
-  store: new CyclicSessionStore(
-    {
-      table: {
-        name: process.env.CYCLIC_DB,
-      },
-      keepExpired: false,
-      touchInterval: 30000, 
-      ttl: 86400000
-    }
-  )
+  saveUninitialized: true,
+  resave: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
