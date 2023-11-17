@@ -14,6 +14,19 @@ class UserService {
         const data = await this.userModel.create({ name, email, password: encript, createdAt: date, updatedAt: date });
         return data;
     }
+
+    async delete(email) {
+       try {
+        await this.userModel.destroy({
+            where : {
+                email: email
+            }
+        })
+        return true
+       } catch (error) {
+        return false;
+       }
+    }
 }
 
 module.exports = UserService;
